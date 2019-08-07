@@ -11,22 +11,26 @@ It is implemented in Typed Racket.
 
 @defmodule[mumble-ping]
 
-@defproc[(mumble-ping [host String] [port Integer 64738]) (U mumble-ping-response False)]{
+@defproc[(mumble-ping [host String] [port Integer 64738]) (Option mumble-ping-response)]{
 Query Mumble server at @racketid[host] on @racketid[port].
 This procedure uses the UDP Ping technique described at the @hyperlink["https://wiki.mumble.info/wiki/Protocol"]{Mumble Wiki}.
 }
 
 @defstruct[mumble-ping-response
-    ([version (Immutable-Vector Byte Byte Byte)]
-     [users Integer]
-     [max-users Integer]
-     [max-bandwidth Integer])
+    ([version Mumble-Version]
+     [users Exact-Nonnegative-Integer]
+     [max-users Exact-Nonnegative-Integer]
+     [max-bandwidth Exact-Nonnegative-Integer]
+     [latency Exact-Nonnegative-Integer])
     #:transparent]{
 A response from a mumble server. The fields are:
 @itemlist[@item{@racketid[version] is the Mumble server version.}
           @item{@racketid[users] is the current number of connected users.}
           @item{@racketid[max-users] is the maximum number of users the server supports.}
-          @item{@racketid[max-bandwidth] is the maximum bandwidth of the server.}]}
+          @item{@racketid[max-bandwidth] is the maximum bandwidth of the server.}
+          @item{@racketid[latency] is the duration between request and response in milliseconds.}]}
+
+@defidform[Mumble-Version]{Alias for @racket[(Immutable-Vector Byte Byte Byte Byte)].}
 
 @section{Project Information}
 
