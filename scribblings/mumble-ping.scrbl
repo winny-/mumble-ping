@@ -39,6 +39,19 @@ A response from a mumble server. The fields are:
  @item{@hyperlink["https://github.com/winny-/mumble-ping"]{Source code on GitHub}}
 ]
 
+@subsection{Racket Compatibility}
+
+@itemlist[
+@item{7.1}
+@item{7.2}
+@item{7.3}
+@item{7.4}
+@item{And likely any later version.}
+]
+
+@racket[Immutable-Vector] is apparently not provided by
+@racketmodname[typed/racket] or @racketmodname[typed/racket/base] in 7.0 or
+earlier.
 
 @section{To Do}
 
