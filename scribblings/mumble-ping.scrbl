@@ -4,6 +4,8 @@
 
 @title{Mumble Ping}
 
+@hyperlink["https://unmaintained.tech/"]{@image{unmaintained.svg}}
+
 @section{Pinging Mumble Servers}
 
 This library provides a simple interface to query Mumble servers.
